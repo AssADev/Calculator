@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(70deg, #000000, #434343);
+}
+
+/* Calculatrice */
+.calculatrice {
+    position: relative;
+    z-index: 10;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 25px rgba(0,0,0, 0.6);
+    overflow: hidden;
+}
+
+/* Ecran */
+.calculatrice .ecran {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 15px 22.5px;
+    background: #222;
+}
+
+.calculatrice .ecran input {
+    width: 100%;
+    color: #FFF;
+    font-size: 4.5em;
+    border: none;
+    background-color: transparent;
+    text-align: right;
+}
+
+/* Touches */
+.calculatrice .boutons {
+    background-color: #999;
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.calculatrice .boutons button {
+    border: 0;
+    cursor: pointer;
+    color: #000;
+    font-size: 3em;
+    padding: 15px 25px;
+    text-align: center;
+}
+
+.calculatrice .boutons button:active {
+    background-color: #E0E0E0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+/* Opérateurs */
+.calculatrice .boutons .egal {
+    border: none;
+    background: linear-gradient(200deg, #11998e, #38ef7d);
+    grid-column: 4;
+    grid-row: 2 / span 3;
+    animation: hue 3s infinite linear;
+}
+
+.calculatrice .boutons button.egal:active {
+    background: linear-gradient(200deg, #0f867c, #33d471);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.calculatrice .boutons .operateur {
+    background-color: #CCC;
+}
+
+.calculatrice .boutons .operateur.del {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.calculatrice .boutons button.operateur:active {
+    background-color: #B0B0B0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+/* Customisation */
+.pop_up_custom {
+    border: none;
+    position: relative;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pop_up_custom i {
+    position: absolute;
+    background: linear-gradient(200deg, #0f867c, #33d471);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: 0 0 25px rgba(0,0,0, 0.6);
+    border-radius: 50%;
+    font-size: 42px;
+    padding: 10px;
+    transition: 0.65s;
+    animation: hue 4s infinite linear;
+}
+
+.pop_up_custom i#custom_on {
+    opacity: 0;
+}
+
+.pop_up_custom.active i#custom_off {
+    transform: rotate(270deg);
+    opacity: 0;
+}
+
+.pop_up_custom.active i#custom_on {
+    position: absolute;
+    opacity: 1;
+    transform: rotate(270deg);
+}
+
+/* Ecran customisation */
+.screen_customisation {
+    padding: 30px 30px 30px 35px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 400px;
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 10px 10px 25px rgba(0,0,0, 0.6);
+    transition: 0.65s;
+}
+
+.screen_customisation.customisation_on {
+    transform: translate(50%, -50%);
+}
+
+.screen_customisation #customBox {
+    position: relative;
+    font-size: 24px;
+    color: #FFF;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.screen_customisation #customBox:first-child {
+    margin-top: 0;
+}
+
+.screen_customisation #customBox::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -20px;
+    background: #FFF;
+    opacity: 0.2;
+}
+
+.screen_customisation #customBox:last-child::before {
+    display: none;
+}
+
+/* Screen Size */
+select {
+    margin-top: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: 0 0 15px rgba(0,0,0, 0.6);
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+select:hover {
+    background: #444;
+}
+
+select option {
+    background: #444;
+}
+
+/* Chexbox */
+input[type="checkbox"] {
+    position: relative;
+    margin-top: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 90px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(0,0,0, 0.6);
+    cursor: pointer;
+}
+
+/* Mode Scientifique */
+input#checkboxScience::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    box-shadow: 0 0 15px rgba(0,0,0, 0.6);
+    transition: 0.3s;
+}
+
+input#checkboxScience::after {
+    content: 'OFF';
+    position: absolute;
+    left: 105px;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #FFF;
+}
+
+input#checkboxScience:checked::before {
+    background: #FFF;
+    left: 55px;
+}
+
+input#checkboxScience:checked::after {
+    content: 'ON';
+}
+
+/* RGB Activation */
+input#checkboxRGB::before {
+    content: '';
+    position: absolute;
+    left: 55px;
+    top: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(200deg, #0f867c, #33d471);
+    animation: hue 4s infinite linear;
+    box-shadow: 0 0 15px rgba(0,0,0, 0.6);
+    transition: 0.3s;
+}
+
+input#checkboxRGB::after {
+    content: 'ON';
+    position: absolute;
+    left: 105px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: linear-gradient(200deg, #0f867c, #33d471);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hue 4s infinite linear;
+}
+
+input#checkboxRGB:checked::before {
+    background: transparent;
+    left: 5px;
+}
+
+input#checkboxRGB:checked::after {
+    content: 'OFF';
+    font-weight: 500;
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: #FFF;
+}
+
+/* Mode Scientifique */
+.scientifique_mode {
+    position: absolute;
+    z-index: 1;
+    top: 51.25%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 0.4s;
+}
+
+.scientifique_mode button {
+    cursor: pointer;
+    background: transparent;
+    box-shadow: 0 0 15px rgba(0,0,0, 0.6);
+    border: none;
+    border-radius: 10px;
+    color: #FFF;
+    padding: 15px 25px;
+    font-size: 3em;
+    margin: 10px 0;
+    transition: 0.3s;
+}
+
+.scientifique_mode button:hover {
+    background: #222;
+}
+
+.scientifique_mode button:active {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3) inset, 0 0 15px rgba(0,0,0, 0.6);
+}
+
+.container.scientifique_on .scientifique_mode {
+    transform: translate(-290%, -50%);
+}
+
+/* RGB False */
+.container.rgb_false .calculatrice .boutons .egal {
+    background: #CCC;
+}
+
+.container.rgb_false .pop_up_custom i {
+    background: #FFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animation */
+@keyframes hue {
+    0% {
+	filter: hue-rotate(0);
+       }
+    100% {
+	filter: hue-rotate(360deg);
+       }
+}
