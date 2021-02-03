@@ -39,7 +39,7 @@ function racineCarre() {
 
 // Ajout de chiffre :
 function addNumber(id) {
-    let value = document.getElementById(id).value;
+    let value = id;
     if (id == "+" || id == "-" || id == "*" || id == "/" || id == "^") {
         valider = true;
         if (compteur > 1) {
